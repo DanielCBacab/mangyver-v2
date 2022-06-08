@@ -1,22 +1,30 @@
 import "./App.css";
+import RoutesSite from "./routes/RoutesSite";
+import { createTheme } from "@mui/material/styles";
+import { ThemeProvider } from "styled-components";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      light: "#757ce8",
+      main: "#2760B7",
+      dark: "#18458A",
+      contrastText: "#fff",
+    },
+    secondary: {
+      light: "#7E9DCC",
+      main: "#6480AB",
+      dark: "#475B7A",
+      contrastText: "#747474",
+    },
+  },
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <RoutesSite />
+    </ThemeProvider>
   );
 }
 
