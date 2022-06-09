@@ -1,78 +1,121 @@
 import React from "react";
-import { Button, Grid } from "@mui/material";
+import { Grid, Divider } from "@mui/material";
 import MangiverLogo from "../assets/logo.png";
+import CollapseSideNav from "./CollapseSideNav";
 import SideNavItem from "./SideNavItem";
+import Profile from "./Profile";
 //Icons
-import Advice from "../assets/advice.svg";
-import CreateAdvice from "../assets/createAdvice.svg";
-import DownloadAdvice from "../assets/downloadAdvice.svg";
+import AdviceIcon from "./Icons/AdviceIcon";
+import CreateAdviceIcon from "./Icons/CreateAdviceIcon";
+import DownloadAdviceIcon from "./Icons/DownloadAdviceIcon";
+import NotificationIcon from "./Icons/NotificationIcon";
+import CreateNotificationIcon from "./Icons/CreateNotificationIcon";
+import DownloadNotificationIcon from "./Icons/DownloadNotificationIcon";
+import UserControlIcon from "./Icons/UserControlIcon";
 
 const NavItem = [
   {
     id: 1,
     title: "Avisos",
-    icon: { Advice },
     link: "/",
+    icon: <AdviceIcon />,
   },
   {
     id: 2,
     title: "Creación de avisos",
-    icon: { CreateAdvice },
     link: "/CreateAdvice",
+    icon: <CreateAdviceIcon />,
   },
   {
     id: 3,
     title: "Descargar avisos",
-    icon: { DownloadAdvice },
     link: "/DownloadAdvice",
-    icon: { DownloadAdvice },
+    icon: <DownloadAdviceIcon />,
   },
-  { id: 4, title: "Notificaciones", link: "/Notification", icon: { Advice } },
+  {
+    id: 4,
+    title: "Notificaciones",
+    link: "/Notification",
+    icon: <NotificationIcon />,
+  },
   {
     id: 5,
     title: "Creación de notificaciones",
     link: "/CreateNotification",
-    icon: { CreateAdvice },
+    icon: <CreateNotificationIcon />,
   },
   {
     id: 6,
     title: "Descargar notificaciones",
     link: "/DownloadNotification",
-    icon: { DownloadAdvice },
+    icon: <DownloadNotificationIcon />,
   },
 ];
 
-const SideNavContainer = () => {
+const SideNavContainer = ({ onClose, close }) => {
   return (
     <Grid
       container
       sx={{
+        minHeight: "100vh",
+        height: "100%",
         paddingTop: "1.75rem",
         paddingLeft: "1.5rem",
         paddingRight: "1.5rem",
       }}
     >
       <Grid item xs={12}>
-        <img src={MangiverLogo} sx={{ width: "100% !important" }} />
+        <img
+          src={MangiverLogo}
+          style={{ width: "100%" }}
+          loading="lazy"
+          alt="Mangiver"
+        />
       </Grid>
       <Grid item xs={12}>
-        Perfil
+        <Profile close={close} />
+        <Divider
+          variant="middle"
+          sx={{
+            marginLeft: "0",
+            marginRight: "0",
+          }}
+        />
       </Grid>
-      <Grid item xs={12} sx={{ paddingTop: "1.5rem" }}>
+
+      <Grid item xs={12}>
         {NavItem.map((item) => (
           <SideNavItem
             key={item.id}
             title={item.title}
             link={item.link}
             icon={item.icon}
+            close={close}
           />
         ))}
+        <Divider
+          variant="middle"
+          sx={{
+            marginLeft: "0",
+            marginRight: "0",
+          }}
+        />
       </Grid>
+
       <Grid item xs={12}>
-        <SideNavItem title={"Control de usuarios"} />
+        <SideNavItem
+          title={"Control de usuarios"}
+          icon={<UserControlIcon />}
+          close={close}
+          link={null}
+        />
       </Grid>
-      <Grid item xs={12}>
-        Ocultar panel
+      <Grid item xs={12} sx={{ justifyContent: "end", display: "flex" }}>
+        <CollapseSideNav
+          onClose={onClose}
+          close={close}
+          title={close ? "" : "Ocultar panel"}
+        />
       </Grid>
     </Grid>
   );

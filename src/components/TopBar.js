@@ -15,9 +15,6 @@ const TopBar = () => {
         sx={{
           flexGrow: 1,
           backgroundColor: "primary.main",
-          // paddingTop: "1.75rem",
-          // paddingBottom: "1.75rem",
-          // paddingLeft: "2.25rem",
         }}
       >
         <Toolbar>

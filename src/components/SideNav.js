@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import SideNavContainer from "./SideNavContainer";
 
-const SideNav = () => {
+const SideNav = ({ onClose, close }) => {
   return (
     <Box
       sx={{
@@ -16,7 +16,7 @@ const SideNav = () => {
       }}
     >
       <Paper elevation={16}>
-        <SideNavContainer />
+        <SideNavContainer close={close} onClose={onClose} />
       </Paper>
     </Box>
   );
