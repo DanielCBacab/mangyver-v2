@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
 import NotificationIcon from "../components/Icons/NotificationIcon";
-
+import NotificationTable from "../components/NotificationTable";
 const Notification = () => {
   return (
     <Grid
@@ -36,14 +36,7 @@ const Notification = () => {
           borderRadius: "0.5rem",
         }}
       >
-        <Grid container>
-          <Grid item xs={12}>
-            {/* <SearchInput /> */}
-          </Grid>
-          <Grid item xs={12}>
-            Table
-          </Grid>
-        </Grid>
+        <NotificationTable />
       </Grid>
     </Grid>
   );

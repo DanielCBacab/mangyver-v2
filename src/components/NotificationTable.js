@@ -2,7 +2,7 @@ import React from "react";
 import PriorityChip from "./PriorityChip";
 import SearchInput from "./SearchInput";
 import Button from "./Button";
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 
 import { DataGrid } from "@mui/x-data-grid";
 
@@ -15,9 +15,8 @@ const rows = [
     col3: "Título de aviso",
     col4: "Ubicación técnica",
     col5: "Tipo de tarjeta",
-    col6: "Descripción",
+    col6: "Si",
     col7: "Causa de la avería",
-    col8: "high",
   },
   {
     id: 2,
@@ -26,9 +25,8 @@ const rows = [
     col3: "Título de aviso",
     col4: "Ubicación técnica",
     col5: "Tipo de tarjeta",
-    col6: "Descripción",
+    col6: "Si",
     col7: "Causa de la avería",
-    col8: "medium",
   },
   {
     id: 3,
@@ -37,86 +35,70 @@ const rows = [
     col3: "Título de aviso",
     col4: "Ubicación técnica",
     col5: "Tipo de tarjeta",
-    col6: "Descripción",
+    col6: "No",
     col7: "Causa de la avería",
-    col8: "low",
   },
 ];
 
 const columns = [
   {
     field: "col1",
-    headerName: "Número de aviso",
+    headerName: "Número de OT",
     width: 150,
     headerClassName: "table-title",
     cellClassName: "first-cell",
   },
   {
     field: "col2",
-    headerName: "Tipo de aviso",
+    headerName: "Fecha",
     width: 150,
     headerClassName: "table-title",
   },
   {
     field: "col3",
-    headerName: "Título de aviso",
+    headerName: "Hora de inicio",
     width: 150,
     headerClassName: "table-title",
   },
   {
     field: "col4",
-    headerName: "Ubicación técnica",
+    headerName: "Hora de finalización",
     width: 150,
     headerClassName: "table-title",
   },
   {
     field: "col5",
-    headerName: "Tipo de tarjeta",
+    headerName: "Comentario",
     width: 150,
     headerClassName: "table-title",
   },
   {
     field: "col6",
-    headerName: "Descripción",
+    headerName: "¿Se realizó la orden?",
     width: 150,
     headerClassName: "table-title",
-  },
-  {
-    field: "col7",
-    headerName: "Causa de la avería",
-    width: 150,
-    headerClassName: "table-title",
-  },
-  {
-    field: "col8",
-    headerName: "Prioridad",
-    width: 250,
-    headerClassName: "table-title",
-    renderCell: (level) => {
-      return <PriorityChip level={level.getValue(level.id, "col8")} />;
+    renderCell: (isOrder) => {
+      return (
+        <Typography
+          color={
+            isOrder.getValue(isOrder.id, "col6") === "Si" ? "red" : "green"
+          }
+        >
+          {isOrder.getValue(isOrder.id, "col6") === "Si" ? "Si" : "No"}
+        </Typography>
+      );
     },
     disableClickEventBubbling: true,
   },
   {
-    field: "col9",
-    headerName: "Acciones",
+    field: "col7",
+    headerName: "Autor",
     width: 150,
     headerClassName: "table-title",
-    renderCell: (params) => {
-      return (
-        <Button
-          sx={{ color: "#747474" }}
-          text="Ver aviso"
-          onClick={""}
-          variant={"text"}
-          size={"small"}
-        />
-      );
-    },
   },
 ];
 // END OF Data Grid table
-const AdviceTable = () => {
+const NotificationTable = () => {
   return (
     <Grid container>
       <Grid item xs={12} sx={{ paddingTop: "2rem", paddingBottom: "2rem" }}>
@@ -140,4 +122,4 @@ const AdviceTable = () => {
   );
 };
 
-export default AdviceTable;
+export default NotificationTable;
