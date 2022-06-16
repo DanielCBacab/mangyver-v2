@@ -16,7 +16,7 @@ const rows: GridRowsProp = [
     col6: "Descripción",
     col7: "Causa de la avería",
     col8: "Alta",
-    col9: "",
+    col9: "Ver aviso",
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ const rows: GridRowsProp = [
     col6: "Descripción",
     col7: "Causa de la avería",
     col8: "Media",
-    col9: "",
+    col9: "Ver aviso",
   },
   {
     id: 3,
@@ -40,7 +40,7 @@ const rows: GridRowsProp = [
     col6: "Descripción",
     col7: "Causa de la avería",
     col8: "Baja",
-    col9: "",
+    col9: "Ver aviso",
   },
 ];
 
@@ -49,16 +49,57 @@ const columns: GridColDef[] = [
     field: "col1",
     headerName: "Número de aviso",
     width: 150,
-    color: "#F3F3F3",
+    headerClassName: "table-title",
+    cellClassName: "first-cell",
   },
-  { field: "col2", headerName: "Tipo de aviso", width: 150, color: "#F3F3F3" },
-  { field: "col3", headerName: "Título de aviso", width: 150 },
-  { field: "col4", headerName: "Ubicación técnica", width: 150 },
-  { field: "col5", headerName: "Tipo de tarjeta", width: 150 },
-  { field: "col6", headerName: "Descripción", width: 150 },
-  { field: "col7", headerName: "Causa de la avería", width: 150 },
-  { field: "col8", headerName: "Prioridad", width: 150 },
-  { field: "col9", headerName: "Acciones", width: 150 },
+  {
+    field: "col2",
+    headerName: "Tipo de aviso",
+    width: 150,
+    headerClassName: "table-title",
+  },
+  {
+    field: "col3",
+    headerName: "Título de aviso",
+    width: 150,
+    headerClassName: "table-title",
+  },
+  {
+    field: "col4",
+    headerName: "Ubicación técnica",
+    width: 150,
+    headerClassName: "table-title",
+  },
+  {
+    field: "col5",
+    headerName: "Tipo de tarjeta",
+    width: 150,
+    headerClassName: "table-title",
+  },
+  {
+    field: "col6",
+    headerName: "Descripción",
+    width: 150,
+    headerClassName: "table-title",
+  },
+  {
+    field: "col7",
+    headerName: "Causa de la avería",
+    width: 150,
+    headerClassName: "table-title",
+  },
+  {
+    field: "col8",
+    headerName: "Prioridad",
+    width: 150,
+    headerClassName: "table-title",
+  },
+  {
+    field: "col9",
+    headerName: "Acciones",
+    width: 150,
+    headerClassName: "table-title",
+  },
 ];
 // END OF Data Grid table
 const AdviceTable = () => {
@@ -74,7 +115,9 @@ const AdviceTable = () => {
           sx={{
             border: "0",
             height: "500px",
-            "&:first-child": { color: "primary.main" },
+            "& .table-title, .first-cell": {
+              color: "primary.main",
+            },
           }}
         />
       </Grid>

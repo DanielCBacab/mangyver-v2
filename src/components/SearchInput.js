@@ -2,17 +2,31 @@ import React from "react";
 import { TextField, Box, InputAdornment, IconButton } from "@mui/material";
 import { createStyles } from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
+import { styled } from "@mui/material/styles";
 
-const useStyles = createStyles((theme) => ({
-  label: {
-    textTransform: "none",
-    borderRadius: "0.656rem",
+const CssTextField = styled(TextField)({
+  "& label.Mui-focused": {
+    color: "primary.main",
   },
-}));
+  "& .MuiInput-underline:after": {
+    borderBottomColor: "primary.main",
+  },
+  "& .MuiOutlinedInput-root": {
+    "& fieldset": {
+      borderColor: "#D0D6E1",
+      borderRadius: ".625rem",
+    },
+    "&:hover fieldset": {
+      borderColor: "primary.main",
+    },
+    "&.Mui-focused fieldset": {
+      borderColor: "primary.main",
+    },
+  },
+});
 
 const SearchInput = (props) => {
   const { text, size, color, variant, onClick, ...other } = props;
-  const classes = useStyles();
 
   return (
     <Box
@@ -23,18 +37,17 @@ const SearchInput = (props) => {
       noValidate
       autoComplete="true"
     >
-      <TextField
+      <CssTextField
+        sx={{ borderRadius: ".625rem" }}
         id="outlined-basic"
         label="¿Cuál aviso desea buscar?"
         variant={variant || "outlined"}
         size={size || "large"}
-        classes={{ label: classes.label }}
-        onClick={onClick}
         {...other}
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">
-              <IconButton edge="end" aria-label="search">
+              <IconButton edge="end" aria-label="search" onClick={onClick}>
                 <SearchIcon />
               </IconButton>
             </InputAdornment>
@@ -42,7 +55,7 @@ const SearchInput = (props) => {
         }}
       >
         {text}
-      </TextField>
+      </CssTextField>
     </Box>
   );
 };
