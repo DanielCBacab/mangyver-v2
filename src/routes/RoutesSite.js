@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Layout from "../pages/Layout";
 import Advice from "../pages/Advice";
 import CreateAdvice from "../pages/CreateAdvice";
@@ -9,10 +10,11 @@ import CreateNotification from "../pages/CreateNotification";
 import DownloadNotification from "../pages/DownloadNotification";
 
 const RoutesSite = () => {
+  const [close, onClose] = useState();
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/" element={<Layout close={close} onClose={onClose} />}>
           <Route index element={<Advice />} />
           <Route path="/CreateAdvice" element={<CreateAdvice />} />
           <Route path="/DownloadAdvice" element={<DownloadAdvice />} />

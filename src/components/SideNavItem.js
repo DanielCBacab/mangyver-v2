@@ -1,11 +1,13 @@
 import React from "react";
-import { Button, IconButton } from "@mui/material";
+import { Button, IconButton, Link } from "@mui/material";
 
 const SideNavItem = ({ title, link, icon, close }) => {
   return (
     <>
       {close ? (
-        <IconButton
+        <Link
+          component={IconButton}
+          key={title}
           sx={{
             textDecoration: "none",
             borderRadius: "0.625rem ",
@@ -13,13 +15,13 @@ const SideNavItem = ({ title, link, icon, close }) => {
             marginBottom: "0.5rem",
             backgroundColor: "#F3F3F3",
             color: "primary.main",
-            "&:hover": {
+            "&:active": {
               backgroundColor: "primary.main",
               color: "white",
               fill: "white",
               boxShadow: "0px 3px 14px rgba(0, 0, 0, 0.25)",
             },
-            "&:active": {
+            "&:hover": {
               backgroundColor: "primary.main",
               color: "white",
               fill: "white",
@@ -29,11 +31,14 @@ const SideNavItem = ({ title, link, icon, close }) => {
             marginLeft: "auto",
             display: "grid",
           }}
+          href={link}
         >
           {icon}
-        </IconButton>
+        </Link>
       ) : (
-        <Button
+        <Link
+          component={Button}
+          key={title}
           href={link}
           startIcon={icon}
           sx={{
@@ -66,7 +71,7 @@ const SideNavItem = ({ title, link, icon, close }) => {
           }}
         >
           {title}
-        </Button>
+        </Link>
       )}
     </>
   );

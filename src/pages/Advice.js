@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
 import AdviceIcon from "../components/Icons/AdviceIcon";
-import SearchInput from "../components/SearchInput";
+import AdviceTable from "../components/AdviceTable";
 
 const Advice = () => {
   return (
@@ -37,14 +37,7 @@ const Advice = () => {
           borderRadius: "0.5rem",
         }}
       >
-        <Grid container>
-          <Grid item xs={12}>
-            {/* <SearchInput /> */}
-          </Grid>
-          <Grid item xs={12}>
-            Table
-          </Grid>
-        </Grid>
+        <AdviceTable />
       </Grid>
     </Grid>
   );

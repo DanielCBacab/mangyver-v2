@@ -1,12 +1,10 @@
-import { useState } from "react";
+import React from "react";
 import { Container, Grid } from "@mui/material";
 import { Outlet } from "react-router-dom";
 import SideNav from "../components/SideNav";
 import TopBar from "../components/TopBar";
 
-const Layout = () => {
-  const [close, onClose] = useState(false);
-
+const Layout = ({ close, onClose }) => {
   return (
     <Container maxWidth="xxl" disableGutters>
       <Grid container spacing={0}>

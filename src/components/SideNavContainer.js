@@ -107,7 +107,7 @@ const SideNavContainer = ({ onClose, close }) => {
           title={"Control de usuarios"}
           icon={<UserControlIcon />}
           close={close}
-          link={null}
+          link={"/"}
         />
       </Grid>
       <Grid item xs={12} sx={{ justifyContent: "end", display: "flex" }}>

@@ -5,8 +5,6 @@ import ArrowLeftIcon from "./Icons/ArrowLeftIcon";
 const CollapseSideNav = ({ onClose, close, title }) => {
   handleClick = (e) => {
     onClose(!close);
-    console.log("Se hizo click");
-    console.log(close);
   };
 
   return (
